@@ -17,3 +17,8 @@ Ouput:
 ```
 0 10000010 01000000000000000000000
 ```
+
+The example above contains the three parts of the IEEE 754 single-float precision format:
+ * the `sign bit`,
+ * the `exponent`,
+ * the `fraction`
