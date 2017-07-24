@@ -56,16 +56,30 @@ fn main() {
 
     /* ignore the heading 1 (i.e 1.25 becomes 0.25)*/
 
-    let significant_decimal_minus_one = significant_decimal - 1.0;
+    let mut decimal = significant_decimal - 1.0;
 
     println!(
-        "Considered significant decimal is {}.",
-        significant_decimal_minus_one,
+        "Convert {} ({} - 1) to binary...",
+        decimal,
+        significant_decimal,
     );
 
-    let value: f32 = 0.45;
+    let mut significant_string = String::new();
 
-    /* TODO: #1 convert float into bits string representation,
-     * cannot be done using format!() as f32 does not implement
-     * the fmt::Binary trait */
+    /* TODO: #1 the provided solution below does not work with high numbers */
+    for counter in 0..23 {
+        let result = decimal * 2.0;
+        let truncate: u8 = result.trunc() as u8;
+        significant_string += &truncate.to_string();
+        decimal *= 10.0;
+        decimal = decimal.fract();
+    }
+
+    /* TODO: #6 the sign is not handled at all for now
+     * as the program input only accepts positive values */
+    println!(
+        "Final: 0 {} {}",
+        binary_exponent,
+        significant_string,
+    );
 }
