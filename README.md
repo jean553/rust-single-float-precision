@@ -29,3 +29,9 @@ The example above contains the three parts of the IEEE 754 single-float precisio
  * the `sign bit`,
  * the `exponent`,
  * the `fraction`
+
+When a number is represented using the IEEE 754 normal form, each number part contains the following information:
+
+```
+(sign bit) 1.(fraction) x 2^(exponent)
+```
