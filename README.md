@@ -4,6 +4,19 @@ Attempt to create a script that takes a number (base 10)
 and displays its value as stored by `f32` type
 (using single float precision IEEE 754).
 
+## Table of contents
+ - [Warning](#warning)
+ - [Example](#example)
+ - [Float to IEEE 754 form](#float-to-ieee-754-form)
+    * [Define the sign](#define-the-sign)
+    * [Define the exponent](#define-the-exponent)
+    * [Define the fraction](#define-the-fraction)
+ - [IEEE-754-to-float](#ieee-754-to-float)
+    * [Define the sign](#define-the-sign)
+    * [Define the exponent](#define-the-exponent)
+    * [Define the fraction](#define-the-fraction)
+ - [Sources](#sources)
+
 ## Warning
 
 This is an experimental project. So far, the conversion
@@ -72,3 +85,39 @@ We now take the decimal part of the number `1.825` (so `0.825`) and generate 23 
 So the fraction value is `11010011 00110011 0011001`.
 
 The final IEEE 754 value is: `0 10000001 11010011 00110011 0011001`.
+
+## IEEE 754 to float
+
+Let's doing the reversed action for the value: `0 10000001 11010011 00110011 0011001`.
+
+### Define the sign
+
+The first bit is `0`, so the number is positive.
+
+### Define the exponent
+
+`1000 0001b = 129d`, and `129 - 127 = 2`, so the exponent is `2`.
+
+### Define the fraction
+
+The fraction is `1101 0011 0011 0011 0011 001`, so the fraction is equal to the sum of:
+ * 2^-1
+ * 2^-2
+ * 2^-4
+ * 2^-6
+ * 2^-7
+ * 2^-10
+ * 2^-11
+ * 2^-14
+ * 2^-15
+ * 2^-18
+ * 2^-19
+ * 2^-22 
+
+The result is : `0.83`.
+
+The normal form of the final number is `1.83 x 2^2`, so `7.3`.
+
+## Sources
+
+https://www.slideshare.net/rituranjanshrivastwa/quick-tutorial-on-ieee-754-floating-point-representation
